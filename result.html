@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain.exe</title>
+    <link rel="icon" type="image/x-icon" href="favicon.webp">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 bg-[url('./bg.jpg')] bg-cover bg-center">
+    <div class="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col items-center gap-6 sm:gap-8 bg-white bg-opacity-[0.02] backdrop-blur-lg w-full max-w-[90%] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] lg:rounded-[70px]">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-6 sm:mb-8">
+            Result 🎯
+        </h1>
+        <div class="w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center">
+            <canvas id="scoreChart"></canvas>
+        </div>
+        <p id="scoreText" class="text-center sm:text-2xl md:text-3xl font-semibold text-white mt-4 sm:mt-6"></p>
+        <button onclick="window.location.href='index.html'" class="font-bold bg-blue-600 text-white px-4 sm:px-5 py-2 sm:py-3 rounded-lg hover:bg-blue-900 text-lg sm:text-xl shadow-md transition duration-300 ease-in-out">
+            Restart Quiz
+        </button>
+    </div>
+
+    <script src="result.js"></script>
+</body>
+</html>
