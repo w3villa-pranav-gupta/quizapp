@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain.exe</title>
+    <title>BrainBash-Quiz</title>
     <link rel="icon" type="image/x-icon" href="favicon.webp">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen bg-[url('./bg.jpg')] bg-cover bg-center relative px-4">
-    <span id="timer" class="text-white absolute top-10 sm:top-16 md:top-20 lg:top-24 text-4xl sm:text-5xl md:text-6xl font-bold "></span>
-    <div class="p-6 sm:p-8 md:p-10 lg:p-12 bg-white bg-opacity-[0.02] backdrop-blur-lg w-full max-w-[90%] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] lg:rounded-[70px]">
+        <div id="loader" class="flex justify-center items-center h-screen absolute inset-0  ">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-600"></div>
+    </div>
+    <span id="timer" class="text-white absolute top-10 sm:top-16 md:top-20 lg:top-24 text-4xl sm:text-5xl md:text-6xl font-bold"></span>
+    
+    <div id="quizContainer" class="p-6 sm:p-8 md:p-10 lg:p-12 bg-white bg-opacity-[0.02] backdrop-blur-lg w-full max-w-[90%] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] lg:rounded-[70px] hidden">
         <div class="relative w-full rounded-full mb-10 sm:mb-12 border-4 border-slate-700">
             <div id="progressBar" class="bg-green-600 h-4 sm:h-5 md:h-6 rounded-full" style="width: 0%"></div>
         </div>
+
         <h2 id="question" class="text-2xl sm:text-3xl md:text-4xl text-white font-bold mb-6 sm:mb-8"></h2>
         <div id="options" class="space-y-2"></div>
+
         <div class="flex justify-between items-center mt-6 sm:mt-8">
             <button id="nextBtn" class="bg-blue-600 font-bold text-lg sm:text-xl md:text-2xl text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-blue-900 transition duration-300 ease-in-out" disabled>
                 Next
@@ -23,7 +29,6 @@
         </div>
     </div>
 
-    <script src="questions.js"></script>
     <script src="quiz.js" type="module"></script>
 </body>
 </html>

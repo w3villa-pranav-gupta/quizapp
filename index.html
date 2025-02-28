@@ -1,19 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain.exe</title>
-    <link rel="icon" type="image/x-icon" href="favicon.webp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrainBash</title>
+    <link rel="icon" type="image/x-icon" href="favicon.webp" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="flex items-center justify-center min-h-screen bg-[url('./bg.jpg')] bg-cover bg-center px-4">
-    <div class="container text-center p-6 sm:p-8 md:p-10 lg:p-12 bg-white bg-opacity-[0.02] backdrop-blur-lg w-full max-w-[90%] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] lg:rounded-[70px]">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-4 sm:mb-6">Welcome to Brain.exe 🖥️</h1>
-        <button id="startBtn" class="bg-blue-600 font-bold text-white text-lg sm:text-xl px-4 sm:px-5 py-2 rounded-lg hover:bg-blue-900 transition duration-300 ease-in-out">Let's Go!</button>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="flex items-center justify-center min-h-screen bg-[url('./bg.jpg')] bg-cover bg-center px-4"
+  >
+    <div
+      id="mainContainer"
+      class="flex flex-col space-y-8 container text-center p-6 sm:p-8 md:p-10 lg:p-12 bg-white bg-opacity-[0] backdrop-blur-lg w-full max-w-[90%] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] lg:rounded-[70px]"
+    >
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-4 sm:mb-6"
+      >
+        Welcome to BrainBash 🖥️
+      </h1>
+
+      <p class="text-lg sm:text-xl text-white mb-4">
+        Let's setup your quiz arena
+      </p>
+
+      <div class="flex flex-col sm:space-y-4 text-white">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
+          <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
+            <label class="text-lg font-semibold">Category:</label>
+            <select id="categorySelect" class="dropdown p-2 rounded-lg bg-gray-900 text-white w-full sm:w-auto">
+              <option value="9">General Knowledge</option>
+              <option value="18">Computer Science</option>
+              <option value="22">Geography</option>
+              <option value="27">Animals</option>
+              <option value="19">Mathematics</option>
+              <option value="23">History</option>
+              <option value="25">Art</option>
+              <option value="26">Celebrities</option>
+            </select>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
+            <label class="text-lg font-semibold">Level:</label>
+            <select id="difficultySelect" class="dropdown p-2 rounded-lg bg-gray-900 text-white w-full sm:w-auto">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button
+        id="startBtn"
+        class="mx-auto mt-6 w-40 bg-blue-600 font-bold text-white text-lg sm:text-xl px-4 sm:px-5 py-2 rounded-lg hover:bg-blue-900 transition duration-300 ease-in-out"
+      >
+        Let's Go!
+      </button>
+
+      <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("mainContainer").animate(
+                [{ opacity: 0, transform: "scale(0.9)" }, { opacity: 1, transform: "scale(1)" }],
+                { duration: 800, easing: "ease-out", fill: "forwards" }
+            );
+        });
+    
+        const startBtn = document.getElementById("startBtn");
+        
+        startBtn.addEventListener("mouseenter", () => {
+            startBtn.animate([{ transform: "scale(1)" }, { transform: "scale(1.1)" }], { duration: 200, fill: "forwards" });
+        });
+    
+        startBtn.addEventListener("mouseleave", () => {
+            startBtn.animate([{ transform: "scale(1.1)" }, { transform: "scale(1)" }], { duration: 200, fill: "forwards" });
+        });
+    
+        startBtn.addEventListener("click", function () {
+            const category = document.getElementById("categorySelect").value;
+            const difficulty = document.getElementById("difficultySelect").value;
+    
+            if (category && difficulty) {
+                localStorage.setItem("quizCategory", category);
+                localStorage.setItem("quizDifficulty", difficulty);
+                sessionStorage.setItem("transition", "true"); // Store animation flag
+    
+                document.getElementById("mainContainer").animate(
+                    [{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(0.9)" }],
+                    { duration: 500, easing: "ease-in-out", fill: "forwards" }
+                );
+    
+                setTimeout(() => {
+                    window.location.href = "rules.html";
+                }, 500);
+            } else {
+                alert("Please select a category and difficulty level.");
+            }
+        });
+    </script>
+    
     </div>
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
